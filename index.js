@@ -1,16 +1,19 @@
-// index.js
 import { Telegraf } from 'telegraf'
 import { createClient } from '@supabase/supabase-js'
 import dotenv from 'dotenv'
 
 dotenv.config()
 
-const bot = new Telegraf(process.env.BOT_TOKEN)
+console.log('🟢 BOT_TOKEN:', process.env.BOT_TOKEN)
+console.log('🟢 SUPABASE_URL:', process.env.SUPABASE_URL)
+console.log('🟢 SUPABASE_ANON_KEY:', process.env.SUPABASE_ANON_KEY)
 
+// 👉 Теперь создаём клиент Supabase
 const supabase = createClient(
   process.env.SUPABASE_URL,
   process.env.SUPABASE_ANON_KEY
 )
+
 
 // 👉 /start выводит кнопку «Отправить телефон»
 bot.start(ctx => {
